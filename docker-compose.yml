@@ -1,0 +1,13 @@
+services:
+  cover:
+    build: .
+    container_name: cover-studio
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - MAX_CONCURRENT=4
+      - CUSTOM_ICON_DIR=/data/icons
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

@@ -1,0 +1,10 @@
+.git
+.gitignore
+README.md
+build
+cover-server.exe
+cover-server
+data
+_test
+*.md
+.DS_Store

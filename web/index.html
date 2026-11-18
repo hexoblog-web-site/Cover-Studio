@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>封面工坊</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="logo">◈</span>
+      <div>
+        <h1>封面工坊</h1>
+        <p>纯色底 · 居中图标 · 圆润加粗文案</p>
+      </div>
+    </div>
+    <span class="version">Web 版 · 1000 × 500</span>
+  </header>
+
+  <main>
+    <section class="panel controls">
+      <div class="field">
+        <label>左侧文案</label>
+        <input id="left" type="text" value="生成" maxlength="6" placeholder="如：生成" />
+      </div>
+      <div class="field">
+        <label>右侧文案</label>
+        <input id="right" type="text" value="流程" maxlength="6" placeholder="如：流程" />
+      </div>
+
+      <div class="field">
+        <label>背景颜色 <span class="hint">（渐变需开启颜色2）</span></label>
+        <div class="colors" id="colors"></div>
+        <div class="color-custom">
+          <input id="bgPicker" type="color" value="#3B82F6" />
+          <input id="bgText" type="text" value="#3B82F6" maxlength="7" />
+        </div>
+        <div class="toggle-row">
+          <label class="switch-label"><input id="gradEnable" type="checkbox" /> 渐变</label>
+          <span class="hint">颜色2</span>
+          <input id="bg2Picker" class="mini-color" type="color" value="#7C3AED" />
+          <select id="gradDir" class="mini-select">
+            <option value="0">↘ 斜向</option>
+            <option value="1">↓ 纵向</option>
+            <option value="2">→ 横向</option>
+            <option value="3">↙ 反向</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>文字样式 <span class="hint">（颜色 · 大小）</span></label>
+        <div class="style-row">
+          <input id="fontPicker" type="color" value="#FFFFFF" title="文字颜色" />
+          <input id="fontText" type="text" value="#FFFFFF" maxlength="7" />
+        </div>
+        <div class="style-row range-row">
+          <input id="fontSize" type="range" min="60" max="220" step="4" value="128" />
+          <span id="fontSizeVal" class="range-val">128 px</span>
+        </div>
+        <div class="toggle-row">
+          <label class="switch-label"><input id="textShadow" type="checkbox" /> 文字投影</label>
+        </div>
+      </div>
+
+      <div class="field icon-style">
+        <label>图标颜色</label>
+        <div class="colors" id="iconColors"></div>
+        <div class="color-custom">
+          <input id="iconPicker" type="color" value="#FFFFFF" />
+          <input id="iconText" type="text" value="#FFFFFF" maxlength="7" />
+        </div>
+      </div>
+
+      <div class="field icon-effect">
+        <label>图标效果 <span class="hint">（大小 · 光晕 · 层级）</span></label>
+        <div class="style-row range-row">
+          <input id="iconScale" type="range" min="50" max="180" step="5" value="100" />
+          <span id="iconScaleVal" class="range-val">100%</span>
+        </div>
+        <div class="style-row range-row">
+          <input id="glow" type="range" min="0" max="100" step="5" value="55" />
+          <span id="glowVal" class="range-val">光晕 55%</span>
+        </div>
+        <div class="style-row seg-row">
+          <button id="layerText" class="seg-btn active" type="button">文字在上</button>
+          <button id="layerIcon" class="seg-btn" type="button">图标在上</button>
+        </div>
+        <div class="toggle-row">
+          <label class="switch-label"><input id="iconFrame" type="checkbox" /> 圆角容器</label>
+          <label class="switch-label"><input id="monoIcon" type="checkbox" /> 单色剪影</label>
+        </div>
+        <p class="hint" style="margin-top:6px;line-height:1.5;">圆角容器/单色剪影仅对导入图标生效</p>
+      </div>
+
+      <div class="field">
+        <label>中心图标 <span class="hint">（点选图标，或导入自己的图片）</span></label>
+        <button id="importIconBtn" class="import-btn" type="button">＋ 上传我的图标（PNG/JPG/GIF，≤8MB）</button>
+        <input id="iconFile" type="file" accept="image/png,image/jpeg,image/gif" hidden />
+        <div class="icon-grid" id="icons"></div>
+      </div>
+
+      <button id="saveBtn" class="save-btn">
+        <span>⬇</span> 下载封面 PNG
+      </button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section class="panel preview">
+      <div class="preview-head">
+        <span>实时预览</span>
+        <span class="hint">改动即时生效</span>
+      </div>
+      <div class="preview-box">
+        <img id="preview" alt="封面预览" />
+      </div>
+      <div class="preview-foot">
+        <span id="curColor">#3B82F6</span>
+        <span id="curIcon">六边形</span>
+        <span id="curLayer" class="layer-tag">文字在上</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

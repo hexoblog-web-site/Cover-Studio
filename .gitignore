@@ -1,0 +1,6 @@
+data/
+cover-server
+cover-server.exe
+*.exe
+.DS_Store
+*.log
